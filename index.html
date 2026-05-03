@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Générateur de CV Pro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="header">
+  <div class="header-inner">
+    <div class="logo">CV<span>Pro</span></div>
+    <div class="header-sub">Créez un CV professionnel en quelques minutes</div>
+  </div>
+</div>
+
+<div class="app">
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('cv',this)">📄 CV</button>
+    <button class="tab" onclick="switchTab('lettre',this)">✉️ Lettre de motivation</button>
+  </div>
+
+  <!-- TAB CV -->
+  <div class="tab-content active" id="tab-cv">
+    <div class="form-panel">
+      <div class="section-title">Choisir un template</div>
+      <div class="template-selector">
+        <button class="tpl-btn active" onclick="setTpl(1,this)">
+          <div class="tpl-thumb t1-thumb"></div>
+          <div class="tpl-name">Classic</div>
+        </button>
+        <button class="tpl-btn" onclick="setTpl(2,this)">
+          <div class="tpl-thumb t2-thumb"></div>
+          <div class="tpl-name">Modern</div>
+        </button>
+        <button class="tpl-btn" onclick="setTpl(3,this)">
+          <div class="tpl-thumb t3-thumb"></div>
+          <div class="tpl-name">Bold</div>
+        </button>
+      </div>
+
+      <div class="section-title">Informations personnelles</div>
+      <div class="row">
+        <div class="field"><label>Prénom</label><input id="f-prenom" placeholder="Jean" oninput="renderCV();renderLettre()"></div>
+        <div class="field"><label>Nom</label><input id="f-nom" placeholder="Dupont" oninput="renderCV();renderLettre()"></div>
+      </div>
+      <div class="field"><label>Titre / Poste visé</label><input id="f-titre" placeholder="Développeur Full Stack" oninput="renderCV();renderLettre()"></div>
+      <div class="row">
+        <div class="field"><label>Email</label><input id="f-email" placeholder="jean@email.com" oninput="renderCV();renderLettre()"></div>
+        <div class="field"><label>Téléphone</label><input id="f-tel" placeholder="+226 XX XX XX" oninput="renderCV()"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Ville</label><input id="f-ville" placeholder="Ouagadougou" oninput="renderCV()"></div>
+        <div class="field"><label>LinkedIn / Portfolio</label><input id="f-link" placeholder="linkedin.com/in/..." oninput="renderCV()"></div>
+      </div>
+
+      <div class="section-title">Résumé professionnel</div>
+      <div class="field"><textarea id="f-summary" placeholder="Bref résumé de votre profil et vos objectifs..." oninput="renderCV()"></textarea></div>
+
+      <div class="section-title">Expériences</div>
+      <div id="exp-list"></div>
+      <button class="add-btn" onclick="addEntry('exp')">+ Ajouter une expérience</button>
+
+      <div class="section-title">Formations</div>
+      <div id="edu-list"></div>
+      <button class="add-btn" onclick="addEntry('edu')">+ Ajouter une formation</button>
+
+      <div class="section-title">Compétences</div>
+      <div class="field"><input id="f-skills" placeholder="Python, JavaScript, Excel, Figma..." oninput="renderCV()"></div>
+
+      <button class="export-btn" onclick="exportCV()">⬇ Télécharger CV en PDF</button>
+    </div>
+    <div class="preview-panel">
+      <div class="preview-label">Aperçu — <span id="tpl-label">Classic</span></div>
+      <div id="cv-preview"></div>
+    </div>
+  </div>
+
+  <!-- TAB LETTRE -->
+  <div class="tab-content" id="tab-lettre">
+    <div class="form-panel">
+      <div class="section-title">Destinataire</div>
+      <div class="field"><label>Entreprise visée</label><input id="l-entreprise" placeholder="Société ABC" oninput="renderLettre()"></div>
+      <div class="field"><label>Nom du recruteur (optionnel)</label><input id="l-recruteur" placeholder="M. Kaboré" oninput="renderLettre()"></div>
+      <div class="field"><label>Poste visé</label><input id="l-poste" placeholder="Développeur Web Junior" oninput="renderLettre()"></div>
+      <div class="field"><label>Date et lieu</label><input id="l-date" placeholder="Ouagadougou, le 3 mai 2026" oninput="renderLettre()"></div>
+
+      <div class="section-title">Corps de la lettre</div>
+      <div class="field"><label>Accroche — Qui êtes-vous ?</label><textarea id="l-accroche" placeholder="Diplômé en informatique avec 2 ans d'expérience..." oninput="renderLettre()"></textarea></div>
+      <div class="field"><label>Motivation — Pourquoi cette entreprise ?</label><textarea id="l-motivation" placeholder="Votre entreprise m'attire particulièrement car..." oninput="renderLettre()"></textarea></div>
+      <div class="field"><label>Valeur ajoutée — Ce que vous apportez</label><textarea id="l-valeur" placeholder="Mon expertise me permettra de contribuer à..." oninput="renderLettre()"></textarea></div>
+      <div class="field"><label>Conclusion</label><textarea id="l-conclusion" placeholder="Je serais ravi de vous rencontrer..." oninput="renderLettre()"></textarea></div>
+
+      <button class="export-btn" onclick="exportLettre()">⬇ Télécharger Lettre en PDF</button>
+      <button class="export-btn outline" onclick="exportAll()">⬇ Télécharger CV + Lettre</button>
+    </div>
+    <div class="preview-panel">
+      <div class="preview-label">Aperçu lettre de motivation</div>
+      <div id="lettre-preview"></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Créé avec CVPro &mdash; Tous droits réservés</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
