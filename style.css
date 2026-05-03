@@ -267,8 +267,9 @@ body {
   grid-template-columns: 38% 62%;
   font-family: 'Space Grotesk', sans-serif;
   overflow: visible;
+  align-items: start;
 }
-.cv-t2-left { background: #1e2d40; color: white; padding: 1.5rem 1rem; min-height: 100%; }
+.cv-t2-left { background: #1e2d40; color: white; padding: 1.5rem 1rem; align-self: stretch; }
 .cv-t2-right { padding: 1.5rem 1.2rem; overflow: visible; }
 .cv-t2 .cv-name { font-size: 20px; font-weight: 600; color: white; line-height: 1.2; }
 .cv-t2 .cv-job { font-size: 11px; color: #7eb8d4; margin-top: 4px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
