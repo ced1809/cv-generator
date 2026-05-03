@@ -195,7 +195,7 @@ function printStyles() {
     .cv-t1 .cv-skill { font-size: 11px; background: #f2f2f2; padding: 3px 10px; border-radius: 20px; }
 
     /* T2 Modern */
-    .cv-t2 { display: grid; grid-template-columns: 38% 62%; min-height: 100vh; font-family: 'Space Grotesk', sans-serif; }
+    .cv-t2 { display: grid; grid-template-columns: 38% 62%; font-family: 'Space Grotesk', sans-serif; }
     .cv-t2-left { background: #1e2d40; color: white; padding: 1.5cm 1cm; }
     .cv-t2-right { padding: 1.5cm 1cm; }
     .cv-t2 .cv-avatar { width: 60px; height: 60px; border-radius: 50%; background: #2e4a66; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; color: #7eb8d4; margin-bottom: 14px; }
